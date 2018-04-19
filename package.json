@@ -1,0 +1,17 @@
+{
+  "name": "nginx-node",
+  "version": "1.0.0",
+  "description": "node中间层API 搭配nginx",
+  "author": "iyy <chengzhangiyy@163.com>",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.0",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "request": "^2.85.0",
+    "urllib": "^2.27.0"
+  }
+}

@@ -538,6 +538,10 @@ koa-router@^7.4.0:
     path-to-regexp "^1.1.1"
     urijs "^1.19.0"
 
+koa2-cors@^2.0.5:
+  version "2.0.5"
+  resolved "http://registry.npm.taobao.org/koa2-cors/download/koa2-cors-2.0.5.tgz#3404712cd092f728c7f72de704ee7b920d957658"
+
 koa@^2.5.0:
   version "2.5.0"
   resolved "http://registry.npm.taobao.org/koa/download/koa-2.5.0.tgz#b0fbe1e195e43b27588a04fd0be0ddaeca2c154c"

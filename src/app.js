@@ -3,8 +3,12 @@ const chalk = require("chalk"); //打印字体漂亮
 const routes = require("./routes");
 const bodyparser = require("koa-bodyparser");
 const config = require("../config/index.js"); //监听端口
+const cors = require('koa2-cors');
 
 const app = new Koa();
+
+//解决跨域
+app.use(cors());
 
 //bodyparser
 app.use(bodyparser());

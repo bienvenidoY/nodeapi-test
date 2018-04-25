@@ -13,5 +13,9 @@ router
         let data = await apiProxy.phoneNumber(ctx.query);
         ctx.body = data;
 })
+    .get('/qrcode',async ctx=>{
+        let data = await apiProxy.qrcode(ctx.query);
+        ctx.body = data;
+    })
 
 module.exports = router;

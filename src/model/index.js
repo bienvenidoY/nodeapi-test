@@ -3,6 +3,7 @@ const orgRequest = require("request");
 var WXBizDataCrypt = require("../decode/WXBizDataCrypt");
 
 const APPID = 'wxbfe2c6898c6edd6a'//小程序后台复制
+const SECRET = '83f2dc9cbb0ed5410cc961cfb10fc0b9' //小程序后台复制
 
 module.exports = {
     //服务基础地址
@@ -13,8 +14,7 @@ module.exports = {
     //获取session_key
     get sessionKey() {
         return async function({code = ''}) {
-            let SECRET = '83f2dc9cbb0ed5410cc961cfb10fc0b9',//小程序后台复制
-                JSCODE = code//前端登录获取
+            let JSCODE = code//前端登录获取
             data = await request.get(this.baseUrl + `/sns/jscode2session?appid=${APPID}&secret=${SECRET}&js_code=${JSCODE}&grant_type=authorization_code`);
             //data 中有session_key
             return data;
@@ -31,6 +31,21 @@ module.exports = {
             console.log("解密后 data: ", data);
             return data
         }
+    },
+    get accessToken(){
+      return async function () {
+        let data = await request.get(this.baseUrl + `/cgi-bin/token?appid=${APPID}&secret=${SECRET}&grant_type=client_credential`);
+
+          return data.access_token
+      }
+    },
+    get qrcode(){
+
+      return async function () {
+          let accessToken = await this.accessToken()
+          let data = await request.post(`https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${accessToken}`,{page:'pages/index/main'})
+          return data
+      }
     }
 
 };

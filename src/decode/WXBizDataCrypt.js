@@ -10,6 +10,7 @@ WXBizDataCrypt.prototype.decryptData = function(encryptedData, iv) {
     var sessionKey = new Buffer(this.sessionKey, "base64");
     encryptedData = new Buffer(encryptedData, "base64");
     iv = new Buffer(iv, "base64");
+    console.log(this.appId ,this.sessionKey,iv,encryptedData);
     try {
         // 解密
         var decipher = crypto.createDecipheriv("aes-128-cbc", sessionKey, iv);

@@ -23,7 +23,6 @@ module.exports = {
     get phoneNumber(){
       //解密换取信息
         return async function ({sessionKey = '',iv = '',encryptedData = ''}) {
-
             var pc = new WXBizDataCrypt(APPID, sessionKey);
 
             var data = pc.decryptData(encryptedData, iv);

@@ -319,6 +319,10 @@ form-data@~2.3.1:
     combined-stream "1.0.6"
     mime-types "^2.1.12"
 
+formidable@^1.0.17:
+  version "1.2.1"
+  resolved "http://registry.npm.taobao.org/formidable/download/formidable-1.2.1.tgz#70fb7ca0290ee6ff961090415f4b3df3d2082659"
+
 fresh@^0.5.2:
   version "0.5.2"
   resolved "http://registry.npm.taobao.org/fresh/download/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
@@ -537,6 +541,12 @@ koa-router@^7.4.0:
     methods "^1.0.1"
     path-to-regexp "^1.1.1"
     urijs "^1.19.0"
+
+koa2-formidable@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/koa2-formidable/download/koa2-formidable-1.0.2.tgz#75619219d774cdd9cc261fc0b17d613212cc994e"
+  dependencies:
+    formidable "^1.0.17"
 
 koa@^2.5.0:
   version "2.5.0"

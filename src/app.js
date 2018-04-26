@@ -1,13 +1,15 @@
 const Koa = require("koa"); //web frnamework
 const chalk = require("chalk"); //打印字体漂亮
 const routes = require("./routes");
-const bodyparser = require("koa-bodyparser");
+const bodyParser = require("koa-bodyparser");
 const config = require("../config/index.js"); //监听端口
+const formidable = require('koa2-formidable')
 
 const app = new Koa();
 
+//app.use(formidable())
 //bodyparser
-app.use(bodyparser());
+app.use(bodyParser());
 
 //自定义错误处理
 app.use(async (ctx, next) => {

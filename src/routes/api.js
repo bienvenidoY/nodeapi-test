@@ -9,7 +9,7 @@ router
     let data = await apiProxy.sessionKey(ctx.query);
     ctx.body = data;
 })
-    .get('/phoneNumber', async ctx=>{
+    .post('/phoneNumber', async ctx=>{
         let data = await apiProxy.phoneNumber(ctx.query);
         ctx.body = data;
 })

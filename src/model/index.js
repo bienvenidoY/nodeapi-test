@@ -36,14 +36,21 @@ module.exports = {
       return async function () {
         let data = await request.get(this.baseUrl + `/cgi-bin/token?appid=${APPID}&secret=${SECRET}&grant_type=client_credential`);
 
-          return data.access_token
+          return JSON.parse(data).access_token
       }
     },
     get qrcode(){
 
       return async function () {
           let accessToken = await this.accessToken()
-          let data = await request.post(`https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${accessToken}`,{page:'pages/index/main'})
+          let options = {
+              uri: `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${accessToken}`,
+              json: {
+                  'page':'pages/details/main?title=navigate',
+                  'scene':'title=navigate'
+              }
+          }
+          let data = await orgRequest.post(options)
           return data
       }
     }

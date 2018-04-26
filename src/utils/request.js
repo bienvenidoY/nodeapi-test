@@ -22,6 +22,7 @@ module.exports = {
     return (options, useResponse = false) => {
       return new Promise((resolve, reject) => {
         baseRequest.post(options, (error, response, body) => {
+          console.log(options , response, body)
           if (error) {
             reject(error);
           }

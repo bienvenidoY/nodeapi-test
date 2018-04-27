@@ -9,16 +9,14 @@ module.exports = {
     //登录
     get login() {
         return async function (option) {
-
-            let url = this.baseUrl + '/session',
-             data = await request.post({
-                url,
-                data:option
-            });
-            console.log(data)
+            let options = {
+                uri: this.baseUrl + '/session',
+                json: option
+            }
+            let data = await orgRequest.post(options)
             return data
         };
-    },
+    }
 
-
-};
+  }
+}

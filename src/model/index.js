@@ -1,9 +1,9 @@
 const request = require("../utils/request"); //封装响应拦截器
 const orgRequest = require("request");
-var WXBizDataCrypt = require("../decode/WXBizDataCrypt");
+var WXBizDataCrypt = require("../decode/WXBizDataCrypt");//微信官网解密算法 -- node.js
 
-const APPID = 'wxbfe2c6898c6edd6a'//小程序后台复制
-const SECRET = '83f2dc9cbb0ed5410cc961cfb10fc0b9' //小程序后台复制
+const APPID = 'wxbfe2c6898c6edd6a'//；公司小程序后台复制
+const SECRET = '83f2dc9cbb0ed5410cc961cfb10fc0b9' //公司小程序后台复制
 
 module.exports = {
     //服务基础地址
@@ -20,8 +20,8 @@ module.exports = {
             return data;
         };
     },
+    //解密换取信息
     get phoneNumber(){
-      //解密换取信息
         return async function ({sessionKey = '',iv = '',encryptedData = ''}) {
             var pc = new WXBizDataCrypt(APPID, sessionKey);
 
@@ -31,6 +31,7 @@ module.exports = {
             return data
         }
     },
+    //获取access_token
     get accessToken(){
       return async function () {
         let data = await request.get(this.baseUrl + `/cgi-bin/token?appid=${APPID}&secret=${SECRET}&grant_type=client_credential`);
@@ -38,8 +39,8 @@ module.exports = {
           return JSON.parse(data).access_token
       }
     },
+    //生成无限制小程序码（失败 --！，生成不成功）
     get qrcode(){
-
       return async function () {
           let accessToken = await this.accessToken()
           let options = {

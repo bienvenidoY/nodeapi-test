@@ -3,7 +3,7 @@ const apiProxy = require("../model/index");
 
 const router = new Router();
 
-//搜索
+//koa路由
 router
   .get("/sessionKey", async ctx => {
     let data = await apiProxy.sessionKey(ctx.query);
